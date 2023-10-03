@@ -37,7 +37,7 @@ common:
 
 	# any special flag that should be passed to the linker when using this
 	# addon, also used for system libraries with -lname
-	# ADDON_LDFLAGS =
+	ADDON_LDFLAGS = -liconv
 
 	# linux only, any library that should be included in the project using
 	# pkg-config
@@ -88,14 +88,30 @@ common:
 
 osx:
 	ADDON_INCLUDES = libs/essentia/include
-	ADDON_INCLUDES += libs/eigen/include/eigen3
 	ADDON_INCLUDES += src
+	ADDON_INCLUDES += libs/3rdparty/include
+	ADDON_INCLUDES += libs/3rdparty/include/eigen3
+# 	ADDON_INCLUDES += libs/eigen/include/eigen3
+# 	ADDON_INCLUDES += libs/fftw3f/include
 
-	ADDON_LIBS  = libs/essentia/lib/osx/libessentia.dylib
-	
+	ADDON_LIBS  = libs/essentia/lib/osx/libessentia.a
+	ADDON_LIBS  += libs/3rdparty/lib/osx/libz.a
+	ADDON_LIBS  += libs/3rdparty/lib/osx/libavformat.a
+	ADDON_LIBS  += libs/3rdparty/lib/osx/libavutil.a
+	ADDON_LIBS  += libs/3rdparty/lib/osx/libchromaprint.a
+	ADDON_LIBS  += libs/3rdparty/lib/osx/libmp3lame.a
+	ADDON_LIBS  += libs/3rdparty/lib/osx/libsamplerate.a
+	ADDON_LIBS  += libs/3rdparty/lib/osx/libswresample.a
+	ADDON_LIBS  += libs/3rdparty/lib/osx/libtag_c.a
+	ADDON_LIBS  += libs/3rdparty/lib/osx/libtag.a
+	ADDON_LIBS  += libs/3rdparty/lib/osx/libyaml.a
+	ADDON_LIBS  += libs/3rdparty/lib/osx/libavcodec.a
+# 	ADDON_LIBS  += libs/fftw3f/lib/osx/libfftw3.a
 	
 	# osx/iOS only, any framework that should be included in the project
 # 	ADDON_FRAMEWORKS = OpenAL
 
+	ADDON_FRAMEWORKS = VideoToolbox
+	ADDON_FRAMEWORKS += VideoDecodeAcceleration
 
 ios:
