@@ -2,7 +2,8 @@
 
 #include "ofMain.h"
 #include "ofxAudioAnalyzer.h"
-#include "ofSoundPlayerExtended.h"
+#include "waveformDraw.h"
+#include "ofxSoundPlayerObject.h"
 
 class ofApp : public ofBaseApp{
 
@@ -25,14 +26,14 @@ class ofApp : public ofBaseApp{
     
         ofxAudioAnalyzer audioAnalyzer;
     
-        ofSoundPlayerExtended  player;
-        ofSoundBuffer soundBuffer;
+        ofxSoundPlayerObject  player;
+        ofSoundStream stream;
+        ofxSoundOutput output;
+        waveformDraw wave;
     
-        vector<float> spectrum_l, spectrum_r;
+    vector<vector<float>> spectrum;
     
-        ofPolyline waveform_l, waveform_r;
     
-        int sampleRate;
-        int bufferSize;
+
     
 };
