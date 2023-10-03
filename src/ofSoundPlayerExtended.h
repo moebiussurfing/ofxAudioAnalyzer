@@ -5,7 +5,13 @@
 
 #pragma once
 
-#include "ofConstants.h"
+
+//Uncomment the following line that reads #define ENABLE_SOUND_PLAYER_EXTENDED to enable this class, which most problably wont work because of outdated dependencies.
+//I recommend you to use something like ofxSoundObjects which will provide a sound player and the ability to connect to other processes.
+//#define ENABLE_SOUND_PLAYER_EXTENDED
+#ifdef ENABLE_SOUND_PLAYER_EXTENDED
+
+#include "ofConstants.h"1
 
 #include "ofMain.h"
 #include "ofSoundBaseTypes.h"
@@ -151,3 +157,4 @@ protected:
     
 };
 
+#endif

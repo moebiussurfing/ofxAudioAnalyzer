@@ -1,7 +1,7 @@
 
 #include "ofSoundPlayerExtended.h"
 
-
+#ifdef ENABLE_SOUND_PLAYER_EXTENDED
 //#ifdef OF_SOUND_PLAYER_OPENAL
 
 #include "ofUtils.h"
@@ -1100,7 +1100,7 @@ vector<float>& ofSoundPlayerExtended::getBufferForFrame(int _frame, float _fps, 
     return currentBuffer;
 }
 
-
+#endif
 
 
 
