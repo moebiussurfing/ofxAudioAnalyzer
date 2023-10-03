@@ -223,7 +223,7 @@ void ofApp::keyPressed(int key){
     
     if (key == 'e'){
 //        audioAnalyzer.exit();
-        audioAnalyzer = nullptr;
+//        audioAnalyzer = nullptr;
         return;
     }
     
