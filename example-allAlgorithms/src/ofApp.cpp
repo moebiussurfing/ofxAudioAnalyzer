@@ -48,6 +48,7 @@ void ofApp::setup(){
 //    audioAnalyzer.setup(sampleRate, bufferSize, channels);ss
     
 //    player.connectTo(output);
+
     
     
     player.play();
@@ -95,6 +96,8 @@ void ofApp::update(){
         hpcp = audioAnalyzer.getValues(HPCP, 0, smoothing);
         
         tristimulus = audioAnalyzer.getValues(TRISTIMULUS, 0, smoothing);
+        multiPitches = audioAnalyzer.getValues(MULTI_PITCHES, 0, smoothing);
+        
         
         isOnset = audioAnalyzer.getOnsetValue(0);
     }
@@ -108,25 +111,22 @@ void drawValue(const string& name, float value, float valueNorm, bool bDrawNorma
     ypos += yoffset;
 }
 
-void drawValues(const string& name, const vector<float>& values, int &ypos, int width, float maxScaled = 1, int graphH = 75, int yoffset = 50){
+void drawValues(const string& name, const vector<float>& values, ofRectangle& rect, float minScaled, float maxScaled, bool bClamp = true, int yoffset = 50){
     ofSetColor(255);
-    ofDrawBitmapString(name, 0, ypos);
+    ofDrawBitmapString(name, rect.x, rect.y);
     ofPushMatrix();
-    ofTranslate(0, ypos);
+    ofTranslate(rect.x, rect.y);
     ofSetColor(ofColor::cyan);
-    float bin_w = (float) width / values.size();
+    float bin_w = (float) rect.width / values.size();
     for (int i = 0; i < values.size(); i++){
-        float scaledValue = values[i];
-        if(!ofIsFloatEqual(maxScaled, 1.0f)){
-            scaledValue = ofMap(values[i], 0, maxScaled, 0.0, 1.0, true);//clamped value    
-        }
-        float bin_h = -1 * (scaledValue * graphH);
-        ofDrawRectangle(i*bin_w, graphH, bin_w, bin_h);
+        float scaledValue = ofMap(values[i], minScaled, maxScaled, 0.0, 1.0, bClamp);
+        float bin_h = -1 * (scaledValue * rect.height);
+        ofDrawRectangle(i*bin_w, rect.height, bin_w, bin_h);
     }
     ofPopMatrix();
     
     
-    ypos += graphH + yoffset;
+    rect.y = rect.getMaxY() + yoffset;
 }
 
 //--------------------------------------------------------------
@@ -177,29 +177,29 @@ void ofApp::draw(){
 
     drawValue("Strong Decay: " , strongDecay, strongDecayNorm, true, xpos, ypos, mw);
 
-    drawValue("RMS: ", isOnset, 0, false, xpos, ypos, mw);
+    drawValue("Onset: ", isOnset, isOnset, true, xpos, ypos, mw);
 
     // ofPopMatrix();
     
     //-Vector Values Algorithms:
     
-    ofPushMatrix();
+//    ofPushMatrix();
     
-    ofTranslate(700, 0);
+//    ofTranslate(700, 0);
     
     // int graphH = 75;
     // int yoffset = graphH + 50;
-    ypos = 30;
+    ofRectangle rect (700,30, mw, 70);
     
     
-    drawValues("Spectrum: ", spectrum, ypos, mw, DB_MIN, DB_MAX);
-    drawValues("Mel Bands: ", melBands, ypos, mw, DB_MIN, DB_MAX);
-    drawValues("MFCC: ", mfcc, ypos, mw, 0, MFCC_MAX_ESTIMATED_VALUE);
-    drawValues("HPCP: ", hpcp, ypos, mw, 0, 1);
-    drawValues("Tristimulus: ", tristimulus, ypos, mw, 0, 1);
+    drawValues("Spectrum: ", spectrum, rect, DB_MIN, DB_MAX);
+    drawValues("Mel Bands: ", melBands, rect, DB_MIN, DB_MAX);
+    drawValues("MFCC: ", mfcc, rect, 0, MFCC_MAX_ESTIMATED_VALUE);
+    drawValues("HPCP: ", hpcp, rect, 0, 1);
+    drawValues("Tristimulus: ", tristimulus, rect, 0, 1);
+    drawValues("multiPitches: ", multiPitches, rect, 0,1, false);
     
-    
-    ofPopMatrix();
+//    ofPopMatrix();
     
     //-Gui & info:
     
@@ -212,7 +212,10 @@ void ofApp::draw(){
     ss << "fps: " << ofGetFrameRate() << "\n";
     ss <<"Keys 1-6: Play audio tracks\n";
     ss << "player num chans: " << player.getSoundFile().getNumChannels() << "\n";
-                                                    
+
+    ss << "MULTI_PITCHES isActive: " << boolalpha << audioAnalyzer.getIsActive(0, MULTI_PITCHES) << "\n";
+    ss << "PITCH_SALIENCE_FUNC_PEAKS isActive: " << boolalpha << audioAnalyzer.getIsActive(0, PITCH_SALIENCE_FUNC_PEAKS) << "\n";
+    
     ofDrawBitmapString(ss.str(), 10, 100);
     
     
@@ -222,8 +225,9 @@ void ofApp::draw(){
 void ofApp::keyPressed(int key){
     
     if (key == 'e'){
-//        audioAnalyzer.exit();
-//        audioAnalyzer = nullptr;
+        
+        audioAnalyzer.setActive(0,MULTI_PITCHES, true);
+        audioAnalyzer.setActive(0,PITCH_SALIENCE_FUNC_PEAKS, true);
         return;
     }
     
@@ -231,22 +235,22 @@ void ofApp::keyPressed(int key){
     switch (key) {
        
         case '1':
-            player.load("test440mono.wav");
+            player.load(ofToDataPath("test440mono.wav"));
             break;
         case '2':
-            player.load("flute.wav");
+            player.load(ofToDataPath("flute.wav"));
             break;
         case '3':
-            player.load("chord.wav");
+            player.load(ofToDataPath("chord.wav"));
             break;
         case '4':
-            player.load("cadence.wav");
+            player.load(ofToDataPath("cadence.wav"));
             break;
         case '5':
-            player.load("beatTrack.wav");
+            player.load(ofToDataPath("beatTrack.wav"));
             break;
         case '6':
-            player.load("noise.wav");
+            player.load(ofToDataPath("noise.wav"));
             break;
             
             
