@@ -2,9 +2,8 @@
 
 #include "ofMain.h"
 #include "ofxAudioAnalyzer.h"
-#include "ofSoundPlayerExtended.h"
 #include "ofxGui.h"
-
+#include "ofxSoundPlayerObject.h"
 class ofApp : public ofBaseApp{
 
 	public:
@@ -25,13 +24,15 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-        ofxAudioAnalyzer audioAnalyzer;
-        ofSoundPlayerExtended player;
+    ofxAudioAnalyzer audioAnalyzer;
+        
+    ofSoundStream stream;
+    ofxSoundOutput output;
     
-        int sampleRate;
-        int bufferSize;
+
     
-        ofSoundBuffer soundBuffer;
+    ofxSoundPlayerObject player;
+    
     
         float rms;
         float power;

@@ -1,3 +1,4 @@
 ofxAudioAnalyzer
-ofxAudioDecoder
+ofxAudioFile
 ofxGui
+ofxSoundObjects
