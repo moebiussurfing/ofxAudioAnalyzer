@@ -23,10 +23,7 @@ Demo video: https://vimeo.com/129795472
 ## Installation
 
 Currently this branch only supports macos for ARM Apple computers (M1 and M2).
-you will need to install the dependencies by running the following line in the terminal (you need to have [Homebrew](https://brew.sh/) installed):
-```
-brew install libyaml fftw ffmpeg libsamplerate libtag tensorflow
-```
+
 
 ## Compilation
 
