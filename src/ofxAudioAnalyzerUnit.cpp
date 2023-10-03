@@ -155,7 +155,8 @@ void ofxAudioAnalyzerUnit::setup(int sampleRate, int bufferSize){
 
     pitchDetect.algorithm = factory.create("PitchYinFFT",
                                       "frameSize", _framesize,
-                                      "sampleRate", _samplerate);
+                                      "sampleRate", _samplerate,
+                                      "interpolate", false);
 
     harmonicPeaks.algorithm = factory.create("HarmonicPeaks");
 
