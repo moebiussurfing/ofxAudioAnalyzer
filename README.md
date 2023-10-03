@@ -1,5 +1,6 @@
 # ofxAudioAnalyzer
 
+
 ## Description
 
 [openFrameworks](http://openframeworks.cc/) addon for audio analysis. It provides the following algorithms :
@@ -14,19 +15,27 @@ Demo video: https://vimeo.com/129795472
 
 ## Compatibility
 
-  OSX & Linux - OF 0.10.0 
+  OSX  - OF 0.12.0 
+  Linux - OF 0.10.0 
 
-  Tested with OSX 10.11.6 and Ubuntu 14.04
+  Tested with OSX 13.5.1 (Ventura) and Ubuntu 14.04
+  
+## Installation
+
+Currently this branch only supports macos for ARM Apple computers (M1 and M2).
+you will need to install the dependencies by running the following line in the terminal (you need to have [Homebrew](https://brew.sh/) installed):
+```
+brew install libyaml fftw ffmpeg libsamplerate libtag tensorflow
+```
 
 ## Compilation
 
-  * Linux: Makefiles.
+Use the Project Generator to update the examples and generate the necesary project files.
 
-  * OSX: The best and easiest way is to use Xcode Projects. You can also use the makefiles, but in OSX you'll need to add ofxAudioDecoder to addons.make.
 
 ## Dependencies
 
-  For playing and analyzing audio files (see [Audio File Player](#audio-file-player)), *ofxAudioDecoder* addon is needed for OSX.
+* [ofxSoundObjects](https://github.com/roymacdonald/ofxSoundObjects/)
 
 
 ## Usage
