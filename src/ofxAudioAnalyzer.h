@@ -27,20 +27,34 @@
 #include "ofMain.h"
 #include "ofxAudioAnalyzerUnit.h"
 
+#ifdef USING_OFX_SOUND_OBJECTS
+#include "ofxSoundObject.h"
+#endif
+class ofxAudioAnalyzer
+#ifdef USING_OFX_SOUND_OBJECTS
+: public ofxSoundObject
+#endif
 
-class ofxAudioAnalyzer{
+{
  
  public:
     
-    void setup(int sampleRate, int bufferSize, int channels);
-    void reset(int sampleRate, int bufferSize, int channels);
+#ifdef USING_OFX_SOUND_OBJECTS
+    ofxAudioAnalyzer();
+    virtual ~ofxAudioAnalyzer();
+    
+    virtual void process(ofSoundBuffer &input, ofSoundBuffer &output) override;
+#endif
+    
+    
     void analyze(const ofSoundBuffer & inBuffer);
     void exit();
-    
+ 
+#ifndef USING_OFX_SOUND_OBJECTS
     int getSampleRate() {return _samplerate;}
     int getBufferSize() {return _buffersize;}
-    int getChannelsNum(){return _channels;}
-    
+    int getChannelsNum(){return channelAnalyzerUnits.size();}
+#endif
     ///Gets value of single output  Algorithms.
     ///\param algorithm
     ///\param channel: starting from 0 (for stereo setup, 0 and 1)
@@ -51,10 +65,10 @@ class ofxAudioAnalyzer{
     ///\param algorithm
     ///\param channel: starting from 0 (for stereo setup, 0 and 1)
     ///\param smooth: smoothing amount. 0.0=non smoothing, 1.0=fixed value
-    vector<float>& getValues(ofxAAAlgorithm algorithm, int channel, float smooth=0.0);
+    const vector<float>& getValues(ofxAAAlgorithm algorithm, int channel, float smooth=0.0);
     
     ///Gets the array of pitch salience function peaks: bin/cents & value
-    vector<SalienceFunctionPeak>& getSalienceFunctionPeaks(int channel, float smooth=0.0);
+    const vector<SalienceFunctionPeak>& getSalienceFunctionPeaks(int channel, float smooth=0.0);
     
     ///Returns if there is an onset in the speciefied channel.
     bool getOnsetValue(int channel);
@@ -64,7 +78,7 @@ class ofxAudioAnalyzer{
 
     ///Pointers for the audio analyzing units.
     ///Use very carefully!
-    vector<ofxAudioAnalyzerUnit*>& getChannelAnalyzersPtrs(){return channelAnalyzerUnits;}
+    const vector<ofxAudioAnalyzerUnit*>& getChannelAnalyzersPtrs(){return channelAnalyzerUnitsPtrs;}
     
     ///Resets onsetsr detections buffer
     void resetOnsets(int channel);
@@ -85,15 +99,20 @@ class ofxAudioAnalyzer{
     
     void setSalienceFunctionPeaksParameters(int channel, int maxPeaks);
     
-    
+    bool isSetup(){return bIsSetup;}
 
  private:
+    bool bIsSetup = false;
+    int _samplerate = 0;
+    int _buffersize = 0;
+    void _setup(const ofSoundBuffer & inBuffer);
     
-    int _samplerate;
-    int _buffersize;
-    int _channels;
-    
-    vector<ofxAudioAnalyzerUnit*> channelAnalyzerUnits;
+//#ifdef USING_OFX_SOUND_OBJECTS
+   
+
+    vector<unique_ptr<ofxAudioAnalyzerUnit>> channelAnalyzerUnits;
+    vector<ofxAudioAnalyzerUnit*> channelAnalyzerUnitsPtrs;
+//#endif
     
     
 };
