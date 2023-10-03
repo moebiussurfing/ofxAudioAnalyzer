@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2016  Music Technology Group - Universitat Pompeu Fabra
+ * Copyright (C) 2006-2021  Music Technology Group - Universitat Pompeu Fabra
  *
  * This file is part of Essentia
  *
@@ -24,8 +24,8 @@ extern "C" {
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
 #include <libavutil/md5.h>
-#include<libavresample/avresample.h>
-#include<libavutil/opt.h>
+#include <libswresample/swresample.h>
+#include <libavutil/opt.h>
 }
 
 
