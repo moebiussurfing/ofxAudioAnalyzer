@@ -87,8 +87,15 @@ common:
 #android/armeabi-v7a:
 
 osx:
+	ADDON_INCLUDES = libs/essentia/include
+	ADDON_INCLUDES += libs/eigen/include/eigen3
+	ADDON_INCLUDES += src
+
+	ADDON_LIBS  = libs/essentia/lib/osx/libessentia.dylib
+	
+	
 	# osx/iOS only, any framework that should be included in the project
-	ADDON_FRAMEWORKS = OpenAL
+# 	ADDON_FRAMEWORKS = OpenAL
 
 
 ios:
