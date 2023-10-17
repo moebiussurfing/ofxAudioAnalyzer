@@ -98,7 +98,11 @@ void ofxAudioAnalyzer::_setup(const ofSoundBuffer & inBuffer){
             channelAnalyzerUnitsPtrs.resize(chans);
         }else{
             for(int i = channelAnalyzerUnits.size() ; i < chans; i++){
+#ifdef OFX_AUDIO_ANALYZER_USE_SHARED_PTR
+                channelAnalyzerUnits.emplace_back(make_shared<ofxAudioAnalyzerUnit>(_samplerate, _buffersize));
+#else
                 channelAnalyzerUnits.emplace_back(make_unique<ofxAudioAnalyzerUnit>(_samplerate, _buffersize));
+#endif
                 channelAnalyzerUnitsPtrs.push_back(channelAnalyzerUnits.back().get());
             }
         }

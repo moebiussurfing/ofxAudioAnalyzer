@@ -35,6 +35,8 @@ class ofxAudioAnalyzer
 : public ofxSoundObject
 #endif
 
+#define OFX_AUDIO_ANALYZER_USE_SHARED_PTR
+
 {
  
  public:
@@ -109,8 +111,11 @@ class ofxAudioAnalyzer
     
 //#ifdef USING_OFX_SOUND_OBJECTS
    
-
+#ifdef OFX_AUDIO_ANALYZER_USE_SHARED_PTR
+    vector<shared_ptr<ofxAudioAnalyzerUnit>> channelAnalyzerUnits;
+#else
     vector<unique_ptr<ofxAudioAnalyzerUnit>> channelAnalyzerUnits;
+#endif
     vector<ofxAudioAnalyzerUnit*> channelAnalyzerUnitsPtrs;
 //#endif
     
