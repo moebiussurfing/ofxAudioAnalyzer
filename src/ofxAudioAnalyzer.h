@@ -47,7 +47,14 @@ class ofxAudioAnalyzer
     
     virtual void process(ofSoundBuffer &input, ofSoundBuffer &output) override;
 #endif
-    
+    ///\ deprecated function  no longer needed, here just to keep compatibility.
+    void setup(int sampleRate, int bufferSize, int channels){
+        ofLogWarning("ofxAudioAnalyzer::setup") << "you no longer need to call this function. You can safely remove the call to it from your code.";
+    }
+    ///\ deprecated function  no longer needed, here just to keep compatibility.
+    void reset(int sampleRate, int bufferSize, int channels){
+        ofLogWarning("ofxAudioAnalyzer::reset") << "you no longer need to call this function. You can safely remove the call to it from your code.";
+    }
     
     void analyze(const ofSoundBuffer & inBuffer);
     void exit();
