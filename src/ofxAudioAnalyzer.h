@@ -126,6 +126,6 @@ class ofxAudioAnalyzer
     vector<ofxAudioAnalyzerUnit*> channelAnalyzerUnitsPtrs;
 //#endif
     
-    
+    void process(ofSoundBuffer &input, ofSoundBuffer &output);
 };
 

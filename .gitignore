@@ -36,3 +36,28 @@ xcuserdata/
 ## OSX
 .DS_Store
 
+example-stereoAudioOutput/Project.xcconfig
+example-stereoAudioOutput/openFrameworks-Info.plist
+example-stereoAudioOutput/of.entitlements
+example-stereoAudioOutput/Makefile
+example-stereoAudioOutput/example-stereoAudioOutput.xcodeproj/xcshareddata/xcschemes/example-stereoAudioOutput Release.xcscheme
+example-stereoAudioOutput/example-stereoAudioOutput.xcodeproj/xcshareddata/xcschemes/example-stereoAudioOutput Debug.xcscheme
+example-stereoAudioOutput/example-stereoAudioOutput.xcodeproj/project.pbxproj
+example-stereoAudioOutput/config.make
+example-stereoAudioOutput/addons.make
+example-rmsInput/Project.xcconfig
+example-rmsInput/openFrameworks-Info.plist
+example-rmsInput/of.entitlements
+example-rmsInput/Makefile
+example-rmsInput/example-rmsInput.xcodeproj/xcshareddata/xcschemes/example-rmsInput Release.xcscheme
+example-rmsInput/example-rmsInput.xcodeproj/xcshareddata/xcschemes/example-rmsInput Debug.xcscheme
+example-rmsInput/example-rmsInput.xcodeproj/project.pbxproj
+example-rmsInput/config.make
+example-rmsInput/addons.make
+example-audioFilePlayer/Project.xcconfig
+example-audioFilePlayer/openFrameworks-Info.plist
+example-audioFilePlayer/example-audioFilePlayer.xcodeproj/project.pbxproj
+example-allAlgorithms/Project.xcconfig
+example-allAlgorithms/openFrameworks-Info.plist
+example-allAlgorithms/example-allAlgorithms__bin.zip
+example-allAlgorithms/example-allAlgorithms.xcodeproj/project.pbxproj
