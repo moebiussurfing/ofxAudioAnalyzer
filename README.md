@@ -9,8 +9,8 @@ Not included here bc it's ~700MB. [Download](https://mega.nz/file/kO93VZ6L#3CQ0r
 
 #### 2. Some depencencies
 _OF\addons\ofxAudioAnalyzer\libs\fftw3f_  
-_OF\addons\ofxAudioAnalyzer\ofxAudioAnalyzer\libs\openal_  
-_OF\addons\ofxAudioAnalyzer\ofxAudioAnalyzer\libs\sndfile_  
+_OF\addons\ofxAudioAnalyzer\libs\openal_  
+_OF\addons\ofxAudioAnalyzer\libs\sndfile_  
 
 #### 3. Added all the paths in the **addon_config** file:
 _OF\addons\ofxAudioAnalyzer\addon_config.mk_  
