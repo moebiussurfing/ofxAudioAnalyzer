@@ -13,7 +13,7 @@ _OF\addons\ofxAudioAnalyzer\libs\openal_
 _OF\addons\ofxAudioAnalyzer\libs\sndfile_  
 
 #### 3. Added all the paths in the **addon_config** file:
-_OF\addons\ofxAudioAnalyzer\addon_config.mk_  
+[_OF\addons\ofxAudioAnalyzer\addon_config.mk_](https://github.com/moebiussurfing/ofxAudioAnalyzer/blob/master/addon_config.mk)  
 
 ### The errors after compiling the **example-rmsInput** looks like: 
 ![image](https://github.com/moebiussurfing/ofxAudioAnalyzer/assets/2106149/f2a3d679-5924-42c0-a11a-fc6769a32537)  
