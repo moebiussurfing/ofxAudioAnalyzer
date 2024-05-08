@@ -1,3 +1,5 @@
+# WIP
+
 This fork is a so far failed attempt to get **Essentia** running on **Windows/VS 2022/OF 0.12+** by [liquidzym](https://github.com/liquidzym) and [moebiusSurfing](https://github.com/moebiussurfing).  
 The changes that are added are:  
 #### 1 The compiled lib file:
@@ -15,7 +17,11 @@ OF\addons\ofxAudioAnalyzer\addon_config.mk
 
 ### The errors after compiling the **example-rmsInput** looks like: 
 ![image](https://github.com/moebiussurfing/ofxAudioAnalyzer/assets/2106149/f2a3d679-5924-42c0-a11a-fc6769a32537)
+[errors](https://mega.nz/file/1PtjBY7K#7jyQVxniBTBBLhsf6BJxhUCXWc8l84YaAAAAAAAAAAA)
 
+### Modified sources by [liquidzym](https://github.com/liquidzym):  
+[ofxAudioAnalyzer.zip](https://mega.nz/file/1H0x2JoI#I3rceM5trVZIjbEatwduhjW5THd7Rfgo_zakAZ1DS8c)
+[ofxAudioDecoder.zip](https://mega.nz/file/FeVwgDRQ#Y_M0GuF8tkUDFRzV9NRHPMma6suBXrwE-dnLWw53b7g)
 
 -----
 
