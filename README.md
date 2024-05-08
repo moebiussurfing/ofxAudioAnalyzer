@@ -3,17 +3,17 @@
 This fork is a so far failed attempt to get **Essentia** running on **Windows/VS 2022/OF 0.12+** by [liquidzym](https://github.com/liquidzym) and [moebiusSurfing](https://github.com/moebiussurfing).  
 The changes that are added are:  
 #### 1 The compiled lib file:
-OF\addons\ofxAudioAnalyzer\libs\essentia\lib\vs\x64\Debug\essentia.lib  
-OF\addons\ofxAudioAnalyzer\libs\essentia\lib\vs\x64\Release\essentia.lib  
+_OF\addons\ofxAudioAnalyzer\libs\essentia\lib\vs\x64\Debug\essentia.lib_  
+_OF\addons\ofxAudioAnalyzer\libs\essentia\lib\vs\x64\Release\essentia.lib_  
 Not included here bc it's ~700MB. [Download](https://mega.nz/file/kO93VZ6L#3CQ0rnHdDkhFka0zK42XU5LpUuKH6177ADCpbV5Rj2w)
 
 #### 2 Some depencencies
-OF\addons\ofxAudioAnalyzer\libs\fftw3f  
-OF\addons\ofxAudioAnalyzer\ofxAudioAnalyzer\libs\openal  
-OF\addons\ofxAudioAnalyzer\ofxAudioAnalyzer\libs\sndfile  
+_OF\addons\ofxAudioAnalyzer\libs\fftw3f_  
+_OF\addons\ofxAudioAnalyzer\ofxAudioAnalyzer\libs\openal_  
+_OF\addons\ofxAudioAnalyzer\ofxAudioAnalyzer\libs\sndfile_  
 
 #### 3 Added all the paths in the **addon_config** file:
-OF\addons\ofxAudioAnalyzer\addon_config.mk  
+_OF\addons\ofxAudioAnalyzer\addon_config.mk_  
 
 ### The errors after compiling the **example-rmsInput** looks like: 
 ![image](https://github.com/moebiussurfing/ofxAudioAnalyzer/assets/2106149/f2a3d679-5924-42c0-a11a-fc6769a32537)
