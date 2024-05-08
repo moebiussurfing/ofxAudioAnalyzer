@@ -76,8 +76,16 @@ common:
 
 #msys2:
 
-#vs:
-
+vs:
+	ADDON_INCLUDES = libs/essentia/include
+	ADDON_INCLUDES += libs/essentia/include/essentia
+	ADDON_INCLUDES += src
+	ADDON_INCLUDES += libs/3rdparty/include
+	ADDON_INCLUDES += libs/3rdparty/include/eigen3
+# 	ADDON_INCLUDES += libs/eigen/include/eigen3
+# 	ADDON_INCLUDES += libs/fftw3f/include
+	
+	ADDON_INCLUDES += libs/essentia/lib/vs/x64/Debug/essentia.lib
 #linuxarmv6l:
 
 #linuxarmv7l:
